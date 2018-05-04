@@ -21,7 +21,7 @@ void init() {
     glm::vec3 model_pos(0.0, 0.0, 0.0);
     glm::mat4 trans = lookAt(view_pos, model_pos, glm::vec3(0.0, 0.0, 1.0));
     // Model.Load("test4.3ds");
-    Model.Load("./3ds_files/test3.3ds");
+    Model.Load("./3ds_files/test6.3ds");
 
     int m_num = Model.GetObjNum();
     cout << "Obj num is " << m_num << std::endl;
@@ -98,7 +98,7 @@ int main(int argc, char const *argv[]) {
                         if (z_v > Buff.z_buff(ii, jj)) {
                             // float n = ((-z_v) - 3);
                             // float f_v = 20 + 64 * (tanh(n/2.0));
-                            float n = ((-z_v) - 2.7) / 10;
+                            float n = ((-z_v) - 3.5) / 10;
                             float f_v = 35 + 300 * n;
                             Buff.update(ii, jj, (unsigned char)f_v, z_v);
                         }
