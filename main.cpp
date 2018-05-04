@@ -98,8 +98,8 @@ int main(int argc, char const *argv[]) {
                         if (z_v > Buff.z_buff(ii, jj)) {
                             // float n = ((-z_v) - 3);
                             // float f_v = 20 + 64 * (tanh(n/2.0));
-                            float n = ((-z_v) - 3.5) / 10;
-                            float f_v = 35 + 300 * n;
+                            float n = ((-z_v) - 3.5) / 15;
+                            float f_v = 50 + 400 * n;
                             Buff.update(ii, jj, (unsigned char)f_v, z_v);
                         }
                     }
