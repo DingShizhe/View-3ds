@@ -18,13 +18,14 @@ $ cd outputs && bash conv.sh
 ## Render Example
 
 
+<img src="./test4.png" width="425"/> <img src="./test3.png" width="425"/> 
 
-<div style="float:left;border:solid 2px 000;margin:2px;"><img src="./test4.png"  width="250" alt="Monkey"></div>
+<img src="./test5.png" width="425"/> <img src="./out.png" width="425"/> 
 
-<div style="float:left;border:solid 2px 000;margin:2px;"><img src="./test3.png" width="250" alt="Bunny"></div>
+<!-- ![Monkey](./test4.png)  ![Monkey](./test4.png) -->
 
 
-<div style="float:left;border:solid 2px 000;margin:2px;"><img src="./test5.png"  width="250" alt="Dragon"></div>
+<!-- <div style="float:left;border:solid 2px 000;margin:2px;"><img src="./test5.png"  width="250" alt="Dragon"></div> -->
 
-<div style="float:left;border:solid 2px 000;margin:2px;"><img src="./out.png" width="250" alt="Complex"></div>
+<!-- <div style="float:left;border:solid 2px 000;margin:2px;"><img src="./out.png" width="250" alt="Complex"></div> -->
 
