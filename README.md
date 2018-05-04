@@ -9,3 +9,22 @@ $ g++ main.cpp
 $ ./a.out
 $ cd outputs && bash conv.sh
 ```
+
+## Dependency
+ - [OpenGL Mathematics Library](https://glm.g-truc.net/0.9.8/index.html)
+ - [Stanford 3D Scanning Repository](http://graphics.stanford.edu/data/3Dscanrep/)
+
+
+## Render Example
+
+
+
+<div style="float:left;border:solid 2px 000;margin:2px;"><img src="./test4.png"  width="250" alt="Monkey"></div>
+
+<div style="float:left;border:solid 2px 000;margin:2px;"><img src="./test3.png" width="250" alt="Bunny"></div>
+
+
+<div style="float:left;border:solid 2px 000;margin:2px;"><img src="./test5.png"  width="250" alt="Dragon"></div>
+
+<div style="float:left;border:solid 2px 000;margin:2px;"><img src="./out.png" width="250" alt="Complex"></div>
+
