@@ -44,7 +44,7 @@ void Buffer::update(int i, int j, unsigned char new_f, float new_z) {
 }
 
 void Buffer::svimg() {
-    FILE *f = fopen("out.ppm", "wb");
+    FILE *f = fopen("outputs/out.ppm", "wb");
     fprintf(f, "P5\n%i %i 255\n", WIDTH, HEIGHT);
     for (int jj = 0; jj < HEIGHT; jj++)
         for (int ii = 0; ii < WIDTH; ii++)
