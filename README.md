@@ -18,9 +18,9 @@ $ cd outputs && bash conv.sh
 ## Render Example
 
 
-<img src="./test4.png" width="425"/> <img src="./test3.png" width="425"/> 
+<img src="./test4.png" width="300"/> <img src="./test3.png" width="300"/> 
 
-<img src="./test5.png" width="425"/> <img src="./out.png" width="425"/> 
+<img src="./test5.png" width="300"/> <img src="./out.png" width="300"/> 
 
 <!-- ![Monkey](./test4.png)  ![Monkey](./test4.png) -->
 
