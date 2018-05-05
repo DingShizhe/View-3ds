@@ -20,4 +20,4 @@ $ cd outputs && bash conv.sh
 
 <img src="./test4.png" width="300"/> <img src="./test3.png" width="300"/> 
 
-<img src="./test5.png" width="300"/> <img src="./out.png" width="300"/> 
+<img src="./test5.png" width="300"/> <img src="./test6.png" width="300"/> 
