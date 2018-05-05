@@ -21,11 +21,3 @@ $ cd outputs && bash conv.sh
 <img src="./test4.png" width="300"/> <img src="./test3.png" width="300"/> 
 
 <img src="./test5.png" width="300"/> <img src="./out.png" width="300"/> 
-
-<!-- ![Monkey](./test4.png)  ![Monkey](./test4.png) -->
-
-
-<!-- <div style="float:left;border:solid 2px 000;margin:2px;"><img src="./test5.png"  width="250" alt="Dragon"></div> -->
-
-<!-- <div style="float:left;border:solid 2px 000;margin:2px;"><img src="./out.png" width="250" alt="Complex"></div> -->
-

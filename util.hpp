@@ -7,15 +7,13 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <cmath>
 
-
 #define my_length(x, y, z) (Q_rsqrt(pow(x, 2) + pow(y, 2) + pow(z, 2)))
 #define X2I(x) ((int) (WIDTH / 2 + x * WIDTH / 2))
 #define Y2J(y) ((int) (HEIGHT / 2 - y * WIDTH/2))
 #define I2X(i) (((float)(i - (WIDTH / 2)))  / (WIDTH / 2))
 #define J2Y(j) (((float)((HEIGHT / 2) - j)) / (WIDTH / 2))
 
-inline float Q_rsqrt( float number )
-{
+inline float Q_rsqrt( float number ) {
     long i;
     float x2, y;
     const float threehalfs = 1.5F;
@@ -26,13 +24,13 @@ inline float Q_rsqrt( float number )
     i  = 0x5f3759df - ( i >> 1 );               // what the fuck?
     y  = * ( float * ) &i;
     y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
-    return 1/y;
+    return 1 / y;
 }
 
 inline int in_tri(glm::vec4 &A_, glm::vec4 &B_, glm::vec4 &C_, glm::vec2 &D) {
-    glm::vec2 A = glm::vec2(-A_.x/A_.z, -A_.y/A_.z);
-    glm::vec2 B = glm::vec2(-B_.x/B_.z, -B_.y/B_.z);
-    glm::vec2 C = glm::vec2(-C_.x/C_.z, -C_.y/C_.z);
+    glm::vec2 A = glm::vec2(-A_.x / A_.z, -A_.y / A_.z);
+    glm::vec2 B = glm::vec2(-B_.x / B_.z, -B_.y / B_.z);
+    glm::vec2 C = glm::vec2(-C_.x / C_.z, -C_.y / C_.z);
     glm::vec2 v0 = B - A;
     glm::vec2 v1 = C - A;
     glm::vec2 v2 = D - A;
@@ -52,10 +50,9 @@ inline int in_tri(glm::vec4 &A_, glm::vec4 &B_, glm::vec4 &C_, glm::vec2 &D) {
 
 
 inline float z_value(float x, float y, glm::vec3 &ABC) {
-    float z = 1 / (ABC.z - ABC.x*x - ABC.y*y);
-    return -my_length(x*z, y*z, z);
+    float z = 1 / (ABC.z - ABC.x * x - ABC.y * y);
+    return -my_length(x * z, y * z, z);
 }
-
 
 
 #endif

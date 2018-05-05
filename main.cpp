@@ -2,26 +2,28 @@
 #include "model3ds.hpp"
 #include "util.hpp"
 #include "buffer.hpp"
+
 #include <iostream>
 #include <fstream>
-#include <cmath>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/vector_angle.hpp>
-#include <stdio.h>
 
+#include <cstdio>
+#include <cassert>
+#include <cmath>
 
 Model3ds Model;
 Buffer Buff;
 glm::vec4 **Vertex_array;
 vector<ModelObj *> OBvec;
 
-void init() {
+void init(const char *model_f) {
     glm::vec3 view_pos(2.0, 3.0, 4.0);
     glm::vec3 model_pos(0.0, 0.0, 0.0);
     glm::mat4 trans = lookAt(view_pos, model_pos, glm::vec3(0.0, 0.0, 1.0));
     // Model.Load("test4.3ds");
-    Model.Load("./3ds_files/test6.3ds");
+    Model.Load(model_f);
 
     int m_num = Model.GetObjNum();
     cout << "Obj num is " << m_num << std::endl;
@@ -51,7 +53,9 @@ void end() {
     }while (0);
 
 int main(int argc, char const *argv[]) {
-    init();
+    assert(argc > 1);
+    const char *model_f = argv[1];
+    init(model_f);
 
     int m_num = Model.GetObjNum();
 
@@ -109,7 +113,7 @@ int main(int argc, char const *argv[]) {
         cout << z_max << " " << z_min << endl;
     }
 
-    Buff.svimg();
+    Buff.svimg("out.png");
     end();
     return 0;
 }
