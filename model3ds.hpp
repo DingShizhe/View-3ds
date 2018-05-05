@@ -152,6 +152,7 @@ bool Model3ds::Load(const char* fileName ) {
             cout << "VERTEX_DATA_3DS" << endl;
             short m_VertexNum;
             f.read((char*)&m_VertexNum, 2);
+            cout << "VERTEX_NUM: " << m_VertexNum << endl;
             if (m_VertexNum <= 0) return false;
 
             MObj = new ModelObj;
@@ -163,6 +164,7 @@ bool Model3ds::Load(const char* fileName ) {
             cout << "INDEX_DATA_3DS" << endl;
             short m_FaceNum;
             f.read((char*)&m_FaceNum, 2);
+            cout << "FACE_NUM: " << m_FaceNum << endl;
             if (m_FaceNum <= 0) return false;
 
             MObj->LoadFace(f, m_FaceNum);

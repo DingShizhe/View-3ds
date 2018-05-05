@@ -51,7 +51,7 @@ void Buffer::svimg(const char *f_name) {
             fputc(this->FB[jj][ii], f);
     fclose(f);
 
-    char cmd[30] = {0};
+    char cmd[100] = {0};
     strcat(cmd, "convert ");
     strcat(cmd, f_name);
     strcat(cmd, " ");

@@ -27,7 +27,7 @@ inline float Q_rsqrt( float number ) {
     return 1 / y;
 }
 
-inline int in_tri(glm::vec4 &A_, glm::vec4 &B_, glm::vec4 &C_, glm::vec2 &D) {
+inline int in_tri(glm::vec3 &A_, glm::vec3 &B_, glm::vec3 &C_, glm::vec2 &D) {
     glm::vec2 A = glm::vec2(-A_.x / A_.z, -A_.y / A_.z);
     glm::vec2 B = glm::vec2(-B_.x / B_.z, -B_.y / B_.z);
     glm::vec2 C = glm::vec2(-C_.x / C_.z, -C_.y / C_.z);
@@ -54,5 +54,73 @@ inline float z_value(float x, float y, glm::vec3 &ABC) {
     return -my_length(x * z, y * z, z);
 }
 
+inline float f_value (float z_v) {
+    float n = ((-z_v) - 3.5) / 15;
+    float f_v = 50 + 400 * n;
+    return f_v;
+}
+
+inline float f_value (
+    float lamp_intsty,
+    float face_color,
+    glm::vec3 &lamp_p,
+    glm::vec3 &view_p,
+    glm::vec3 &face_p,
+    glm::vec3 &face_norm
+) {
+    float ambientStrength = 0.18f;
+    float ambient = ambientStrength * lamp_intsty;
+
+    // Diffuse
+    float diffuseStrength = 0.8f;
+    glm::vec3 norm = glm::normalize(face_norm);
+    glm::vec3 lampDir = glm::normalize(lamp_p - face_p);
+    float diff = max(glm::dot(norm, lampDir), (float)0.0);
+    float diffuse = diffuseStrength * diff * lamp_intsty;
+
+    // Specular
+    float specularStrength = 0.3f;
+    glm::vec3 viewDir = glm::normalize(view_p - face_p);
+    glm::vec3 reflectDir = glm::reflect(-lampDir, norm);
+    float spec = pow(max(glm::dot(viewDir, reflectDir), (float)0.0), 2);
+    float specular = specularStrength * spec * lamp_intsty;
+
+    float f_v = (ambient + diffuse + specular) * face_color;
+    return f_v;
+}
+
+template <class T>
+inline void get_from_index (
+    T &V0,
+    T &V1,
+    T &V2,
+    T **V_array,
+    int m_idx,
+    unsigned short *Idx_array,
+    int f_idx
+) {
+    V0 = V_array[m_idx][Idx_array[f_idx*3+0]];
+    V1 = V_array[m_idx][Idx_array[f_idx*3+1]];
+    V2 = V_array[m_idx][Idx_array[f_idx*3+2]];
+}
+
+inline void get_bound_box(
+    glm::vec2 prjV0,
+    glm::vec2 prjV1,
+    glm::vec2 prjV2,
+    unsigned &i_min, unsigned &i_max,
+    unsigned &j_min, unsigned &j_max
+) {
+    float v0_x, v0_y, v1_x, v1_y, v2_x, v2_y;
+
+    v0_x = prjV0.x; v0_y = prjV0.y;
+    v1_x = prjV1.x; v1_y = prjV1.y;
+    v2_x = prjV2.x; v2_y = prjV2.y;
+
+    i_min = max(0, X2I(min(min(v0_x, v1_x), v2_x)));
+    j_min = max(0, Y2J(max(max(v0_y, v1_y), v2_y)));  // y axis
+    i_max = min(WIDTH, X2I(max(max(v0_x, v1_x), v2_x)));
+    j_max = min(HEIGHT, Y2J(min(min(v0_y, v1_y), v2_y)));
+}
 
 #endif
