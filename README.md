@@ -6,8 +6,7 @@ Read vertex and faces information of models from a .3ds file, render them based 
 
 ```
 $ g++ main.cpp
-$ ./a.out
-$ cd outputs && bash conv.sh
+$ ./a.out ./3ds_files/foo.3ds
 ```
 
 ## Dependency
@@ -17,7 +16,6 @@ $ cd outputs && bash conv.sh
 
 ## Render Example
 
+<img src="./test0.png" width="300"/> <img src="./test3.png" width="300"/> 
 
-<img src="./test4.png" width="300"/> <img src="./test3.png" width="300"/> 
-
-<img src="./test5.png" width="300"/> <img src="./test6.png" width="300"/> 
+<img src="./test4.png" width="300"/> <img src="./test6.png" width="300"/> 
