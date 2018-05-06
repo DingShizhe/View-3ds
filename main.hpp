@@ -5,7 +5,6 @@
 #define WIDTH  1000
 #define HEIGHT 800
 
-#define PHONG
-
+// #define PHONG
     
 #endif

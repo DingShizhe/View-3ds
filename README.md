@@ -22,7 +22,7 @@ $ display ./outputs/test00.png
 <img src="./outputs/test4.png" width="300"/> <img src="./outputs/test6.png" width="300"/>
 
 
-## Render based on Phong-shading
+## Render based on Phong-Illumination-Model
 
 Add code `#define PHONG` in file `main.hpp`.
 
