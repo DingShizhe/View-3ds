@@ -15,7 +15,7 @@
 
 Model3ds Model;
 Buffer Buff;
-vector<ModelObj *> OBvec;
+vector <ModelObj *> OBvec;
 glm::vec3 **V_array;
 glm::vec2 **prjV_array;
 
@@ -26,7 +26,6 @@ float lamp_intsty = 1.0;
 
 void init(const char *model_f) {
     glm::mat4 trans = lookAt(view_p, model_p, glm::vec3(0.0, 0.0, 1.0));
-    // Model.Load("test4.3ds");
     Model.Load(model_f);
 
     int m_num = Model.GetObjNum();
@@ -57,12 +56,9 @@ void end() {
     delete [] V_array;
 }
 
-#define LOG(str, now, total) do { \
-        cout << str << " " << now << "/" << total << endl; \
-    } while (0);
 
 int main(int argc, char const *argv[]) {
-    assert(argc > 1);
+    // assert(argc > 1);
     const char *model_f = argv[1];
     init(model_f);
 
@@ -104,22 +100,22 @@ int main(int argc, char const *argv[]) {
                     float x = ((float)(ii - (WIDTH / 2))) / (WIDTH / 2);
                     float y = ((float)((HEIGHT / 2) - jj)) / (WIDTH / 2);
                     glm::vec2 D(x, y);
+                    glm::vec3 P;
+                    screen_to_face(D, ABC, P);
+
                     if (in_tri(V0, V1, V2, D)) {
-                        float z_v = z_value(x, y, ABC);
+                        float z_v = z_value(P);
                         // z_min = min(z_min, z_v); z_max = max(z_max, z_v);
                         if (z_v > Buff.z_buff(ii, jj)) {
-                            // float f_v = f_value(z_v);
-                            glm::vec3 center = (V0 + V1 + V2) * (float)0.33;
                         #ifdef PHONG
                             float f_v = f_value (
-                                            lamp_intsty,
-                                            255.0,
-                                            lamp_p,
-                                            view_p,
-                                            center,
-                                            ABC
-                                        );
-                            // f_v = (1.0 - f_value(z_v) / 200) * f_v;
+                                lamp_intsty,
+                                255.0,
+                                lamp_p,
+                                view_p,
+                                P,
+                                ABC
+                            );
                         #else
                             float f_v = f_value(z_v);
                         #endif

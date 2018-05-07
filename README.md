@@ -26,5 +26,5 @@ $ display ./outputs/test00.png
 
 Add code `#define PHONG` in file `main.hpp`.
 
-<img src="./outputs/test00_ph.png" width="300"/> <img src="./outputs/test3_ph.png" width="300"/>
+<img src="./outputs/test1_ph.png" width="300"/> <img src="./outputs/test3_ph.png" width="300"/>
 <img src="./outputs/test5_ph.png" width="300"/> <img src="./outputs/test6_ph.png" width="300"/>

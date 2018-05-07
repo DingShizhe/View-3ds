@@ -13,6 +13,10 @@
 #define I2X(i) (((float)(i - (WIDTH / 2)))  / (WIDTH / 2))
 #define J2Y(j) (((float)((HEIGHT / 2) - j)) / (WIDTH / 2))
 
+#define LOG(str, now, total) do { \
+        cout << str << " " << now << "/" << total << endl; \
+    } while (0);
+
 inline float Q_rsqrt( float number ) {
     long i;
     float x2, y;
@@ -48,10 +52,14 @@ inline int in_tri(glm::vec3 &A_, glm::vec3 &B_, glm::vec3 &C_, glm::vec2 &D) {
     return (u >= 0) && (v >= 0) && (u + v < 1);
 }
 
-
-inline float z_value(float x, float y, glm::vec3 &ABC) {
+inline void screen_to_face(glm::vec2 &D, glm::vec3 &ABC, glm::vec3 &P) {
+    float x = D.x, y = D.y;
     float z = 1 / (ABC.z - ABC.x * x - ABC.y * y);
-    return -my_length(x * z, y * z, z);
+    P = glm::vec3(-x*z, -y*z, z);
+}
+
+inline float z_value(glm::vec3 &P) {
+    return -my_length(P.x, P.y, P.z);
 }
 
 inline float f_value (float z_v) {
